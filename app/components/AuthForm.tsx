@@ -80,7 +80,7 @@ function AuthForm() {
               icon: "🤯",
               style: {
                 background: "#FDFAD9",
-                color: "#D04539",
+                color: "#4699C3",
               },
             });
           }
@@ -108,7 +108,7 @@ function AuthForm() {
             icon: "🤯",
             style: {
               background: "#FDFAD9",
-              color: "#D04539",
+              color: "#4699C3",
             },
           });
         }

@@ -6,9 +6,11 @@ import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
 import { HiPaperAirplane, HiPhoto } from "react-icons/hi2";
 import { CldUploadButton } from "next-cloudinary";
 import MessageInput from "@/app/commons/inputs/MessageInput";
+import { useRouter } from "next/navigation";
 
 const Form = () => {
   const { conversationId } = useConversation();
+  const router = useRouter();
   const {
     register,
     handleSubmit,

@@ -1,6 +1,7 @@
 "use client";
 
 import Avatar from "@/app/commons/avatar/Avatar";
+import AvatarGroup from "@/app/commons/avatar/AvatarGroup";
 import useOtherUser from "@/app/hooks/useOtherUsers";
 import { FullConversationType } from "@/app/types";
 import clsx from "clsx";
@@ -22,9 +23,9 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
   const session = useSession();
   const router = useRouter();
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     router.push(`/conversations/${data.id}`);
-  };
+  }, [data, router]);
 
   const lastMessage = useMemo(() => {
     const messages = data.messages || [];
@@ -72,7 +73,11 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
         selected ? "bg-primary-100" : "bg-primary-50"
       )}
     >
-      <Avatar user={otherUser} />
+      {data.isGroup ? (
+        <AvatarGroup users={data.users} />
+      ) : (
+        <Avatar user={otherUser} />
+      )}
       <div className="min-w-0 flex-1">
         <div className="focus:outline-none">
           {/* <span className="absolute inset-0" aria-hidden="true" /> */}

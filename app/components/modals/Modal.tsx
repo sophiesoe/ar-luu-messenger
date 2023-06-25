@@ -6,14 +6,14 @@ import { IoClose } from "react-icons/io5";
 
 interface ModalProps {
   isOpen?: boolean;
-  onCloseModal: () => void;
+  onClose: () => void;
   children: React.ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onCloseModal, children }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   return (
     <Transition.Root show={isOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-50" onClose={onCloseModal}>
+      <Dialog as="div" className="relative z-50" onClose={onClose}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -27,14 +27,17 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onCloseModal, children }) => {
             className="
               fixed 
               inset-0 
-              bg-black 
-              bg-opacity-75 
+              bg-primary-300
+              bg-opacity-50 
               transition-opacity
             "
           />
         </Transition.Child>
 
-        <div className="fixed inset-0 z-10 overflow-y-auto">
+        <div
+          className="0 fixed inset-0
+        overflow-y-auto"
+        >
           <div
             className="
               flex 
@@ -89,8 +92,10 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onCloseModal, children }) => {
                 >
                   <button
                     type="button"
-                    className="rounded-md bg-primary-50 p-1 text-primary-300 transition duration-100 hover:bg-primary-100 hover:text-white focus:outline-none"
-                    onClick={onCloseModal}
+                    className="
+                      rounded-md p-2 text-gray hover:bg-primary-100 hover:text-white focus:outline-none
+                    "
+                    onClick={onClose}
                   >
                     <span className="sr-only">Close</span>
                     <IoClose className="h-6 w-6" aria-hidden="true" />

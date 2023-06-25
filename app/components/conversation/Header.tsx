@@ -7,7 +7,8 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { HiChevronLeft, HiEllipsisHorizontal } from "react-icons/hi2";
 import ProfileDrawer from "./ProfileDrawer";
-import { set } from "date-fns";
+import ConfirmModal from "../modals/ConfirmModal";
+import AvatarGroup from "@/app/commons/avatar/AvatarGroup";
 
 interface HeaderProps {
   conversation: Conversation & {
@@ -23,14 +24,20 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
     return "Active now";
   }, [conversation]);
 
-  const [isOpened, setIsOpened] = useState(false);
+  const [drawerOpened, setDrawerOpened] = useState(false);
+  const [confirmOpen, setConfirmOpen] = useState(false);
 
   return (
     <>
+      <ConfirmModal
+        isOpen={confirmOpen}
+        onClose={() => setConfirmOpen(false)}
+      />
       <ProfileDrawer
         data={conversation}
-        isOpened={isOpened}
-        onCloseDrawer={() => setIsOpened(false)}
+        isOpen={drawerOpened}
+        onClose={() => setDrawerOpened(false)}
+        onConfirmOpen={() => setConfirmOpen(true)}
       />
       <div
         className="
@@ -60,7 +67,11 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
           >
             <HiChevronLeft size={25} />
           </Link>
-          <Avatar user={otherUser} />
+          {conversation.isGroup ? (
+            <AvatarGroup users={conversation.users} />
+          ) : (
+            <Avatar user={otherUser} />
+          )}
           <div className="flex flex-col">
             <p className="font-semibold">
               {conversation.name || otherUser.name}
@@ -70,7 +81,7 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
         </div>
         <HiEllipsisHorizontal
           size={28}
-          onClick={() => setIsOpened(true)}
+          onClick={() => setDrawerOpened(!drawerOpened)}
           className="
       
               cursor-pointer

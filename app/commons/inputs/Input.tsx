@@ -7,7 +7,7 @@ import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 interface InputProps {
   id: string;
   label: string;
-  placeholder: string;
+  placeholder?: string;
   type?: string;
   required?: boolean;
   disabled?: boolean;
@@ -49,7 +49,7 @@ const Input: React.FC<InputProps> = ({
             w-full
             rounded-lg
             border-0
-            bg-warning-50
+            bg-transparent
             py-1.5
             shadow-sm
             ring-1
