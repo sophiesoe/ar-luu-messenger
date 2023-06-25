@@ -43,9 +43,11 @@ const Button: React.FC<ButtonProps> = ({
     `,
         disabled && "cursor-default opacity-50",
         fullWidth && "w-full",
-        secondary ? "text-black" : "text-white",
+        secondary
+          ? "text-gray hover:bg-primary-100 hover:text-black"
+          : "text-white",
         danger &&
-          "bg-danger-300 hover:bg-danger-200 focus-visible:outline-danger-400",
+          "bg-danger-400 hover:bg-danger-300 focus-visible:outline-danger-400",
         !secondary &&
           !danger &&
           "bg-primary-300 hover:bg-primary-400 focus-visible:outline-primary-400"

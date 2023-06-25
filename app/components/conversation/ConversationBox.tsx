@@ -85,6 +85,7 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
                 className="
                   text-xs 
                   font-light 
+                  text-gray
                 "
               >
                 {format(new Date(lastMessage.createdAt), "p")}

@@ -3,7 +3,11 @@ import getCurrentUser from "./getCurrentUser";
 
 const getConversations = async () => {
   const currentUser = await getCurrentUser();
-  if (!currentUser?.id) return [];
+
+  if (!currentUser?.id) {
+    return [];
+  }
+
   try {
     const conversations = await prisma.conversation.findMany({
       orderBy: {
@@ -18,14 +22,15 @@ const getConversations = async () => {
         users: true,
         messages: {
           include: {
-            seen: true,
             sender: true,
+            seen: true,
           },
         },
       },
     });
+
     return conversations;
-  } catch (error) {
+  } catch (error: any) {
     return [];
   }
 };

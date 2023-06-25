@@ -18,8 +18,9 @@ const MobileFooter = () => {
         w-full 
         items-center 
         justify-between
-        bg-primary-50
-      lg:hidden"
+        bg-primary-100
+        lg:hidden
+      lg:bg-primary-50"
     >
       {routes.map((route) => (
         <MobileItem

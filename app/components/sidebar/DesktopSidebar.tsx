@@ -21,7 +21,6 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser }) => {
         lg:fixed
         lg:inset-y-0 
         lg:left-0 
-        lg:z-40
         lg:flex 
         lg:w-20 
         lg:flex-col

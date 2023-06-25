@@ -37,6 +37,28 @@ export async function POST(request: Request) {
         sender: true,
       },
     });
+    const updatedConversation = await prisma.conversation.update({
+      where: {
+        id: conversationId,
+      },
+      data: {
+        lastMessageAt: new Date(),
+        messages: {
+          connect: {
+            id: newMessage.id,
+          },
+        },
+      },
+      include: {
+        users: true,
+        messages: {
+          include: {
+            seen: true,
+          },
+        },
+      },
+    });
+    return NextResponse.json(newMessage);
   } catch (error: any) {
     console.log(error.messages);
     return new NextResponse("Internal Sever Error", { status: 500 });

@@ -5,10 +5,10 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 async function Sidebar({ children }: { children: React.ReactNode }) {
   const currentUser = await getCurrentUser();
   return (
-    <div className="h-screen">
+    <div className="h-full">
       <DesktopSidebar currentUser={currentUser!} />
       <MobileFooter />
-      <main className="h-screen lg:pl-20">{children}</main>
+      <main className="h-full lg:pl-20">{children}</main>
     </div>
   );
 }
