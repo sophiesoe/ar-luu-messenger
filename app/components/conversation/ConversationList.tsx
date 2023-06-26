@@ -116,6 +116,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
               Your Messages
             </div>
             <div
+              title="create group chat"
               onClick={() => setOpenModal(true)}
               className="
                 cursor-pointer 

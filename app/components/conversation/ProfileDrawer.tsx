@@ -8,6 +8,7 @@ import { format } from "date-fns";
 import useOtherUser from "@/app/hooks/useOtherUsers";
 import Avatar from "@/app/commons/avatar/Avatar";
 import AvatarGroup from "@/app/commons/avatar/AvatarGroup";
+import useActiveList from "@/app/hooks/useActiveList";
 
 interface ProfileDrawerProps {
   isOpen: boolean;
@@ -25,6 +26,8 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
   onConfirmOpen,
 }) => {
   const otherUser = useOtherUser(data);
+  const { members } = useActiveList();
+  const isActive = members.indexOf(otherUser?.id!) !== -1;
 
   const joinedDate = useMemo(() => {
     return format(new Date(otherUser.createdAt), "PP");
@@ -39,8 +42,8 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
       return `${data.users.length} members`;
     }
 
-    return "Active now";
-  }, [data]);
+    return isActive ? "Active now" : "Offline";
+  }, [data, isActive]);
 
   return (
     <div>
