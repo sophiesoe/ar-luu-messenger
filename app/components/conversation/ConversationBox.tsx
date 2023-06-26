@@ -55,8 +55,9 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
   }, [lastMessage]);
 
   const userName = data.name || otherUser.name;
-  const firstName = userName?.split(" ")[0];
-  const lastName = userName?.split(" ")[userName.length - 1];
+  const fullName = userName?.split(" ")!;
+  const firstName = fullName[0];
+  const lastName = fullName[fullName.length - 1];
 
   return (
     <div
