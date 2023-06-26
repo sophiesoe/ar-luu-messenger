@@ -48,6 +48,7 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
           sticky
           left-0
           top-0
+          z-10
           flex
           w-full
           items-center
