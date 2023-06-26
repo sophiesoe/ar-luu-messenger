@@ -100,6 +100,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
         lg:left-20 
         lg:block
         lg:w-80 
+        z-10
         lg:pb-0 
       `,
           isOpen ? "hidden" : "left-0 block w-full"
