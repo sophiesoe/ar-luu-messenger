@@ -13,7 +13,6 @@ interface MessageBoxProps {
   isLast?: boolean;
   data: FullMessageType;
 }
-
 const MessageBox: React.FC<MessageBoxProps> = ({ isLast, data }) => {
   const session = useSession();
   const [imageModalOpen, setImageModalOpen] = useState(false);
@@ -23,13 +22,16 @@ const MessageBox: React.FC<MessageBoxProps> = ({ isLast, data }) => {
     .map((user) => user.name)
     .join(", ");
 
+  const isLongText = data?.body?.length! > 50;
+
   const container = clsx("flex items-end gap-3 p-4", isOwn && "justify-end");
   const avatar = clsx(isOwn && "order-2");
   const body = clsx("flex flex-col gap-1", isOwn && "items-end");
   const message = clsx(
     "text-sm w-fit overflow-hidden",
     isOwn ? "bg-primary-300 text-white" : "bg-primary-50 text-black",
-    data.image ? "rounded-md p-0" : "rounded-full py-2 px-3"
+    data.image && "rounded-md p-0",
+    isLongText ? "rounded-lg py-2 px-3" : "rounded-full py-2 px-3"
   );
 
   return (
