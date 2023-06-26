@@ -55,8 +55,8 @@ const MessageBox: React.FC<MessageBoxProps> = ({ isLast, data }) => {
               <Image
                 onClick={() => setImageModalOpen(true)}
                 alt={data.image}
-                width={288}
-                height={288}
+                width={266}
+                height={266}
                 src={data.image}
                 className="
                 translate 
