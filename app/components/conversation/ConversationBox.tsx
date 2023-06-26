@@ -54,6 +54,10 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
     return "Started a conversation";
   }, [lastMessage]);
 
+  const userName = data.name || otherUser.name;
+  const firstName = userName?.split(" ")[0];
+  const lastName = userName?.split(" ")[userName.length - 1];
+
   return (
     <div
       onClick={handleClick}
@@ -83,7 +87,7 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
           {/* <span className="absolute inset-0" aria-hidden="true" /> */}
           <div className="mb-1 flex items-center justify-between">
             <p className="text-md font-semibold">
-              {data.name || otherUser.name}
+              {`${firstName} ${lastName}`}
             </p>
             {lastMessage?.createdAt && (
               <p
