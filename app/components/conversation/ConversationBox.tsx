@@ -88,7 +88,7 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
           {/* <span className="absolute inset-0" aria-hidden="true" /> */}
           <div className="mb-1 flex items-center justify-between">
             <p className="text-md font-semibold">
-              {`${firstName} ${lastName ? lastName : " "}`}
+              {`${firstName} ${lastName === null ? " " : lastName}`}
             </p>
             {lastMessage?.createdAt && (
               <p
