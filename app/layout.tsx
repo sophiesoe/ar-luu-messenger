@@ -1,3 +1,4 @@
+import ActiveStatus from "./commons/active/ActiveStatus";
 import AuthContext from "./context/AuthContext";
 import ToastContext from "./context/ToastContext";
 import "./globals.css";
@@ -31,6 +32,7 @@ export default function RootLayout({
       <body className={waLone.className}>
         <AuthContext>
           <ToastContext />
+          <ActiveStatus />
           {children}
         </AuthContext>
       </body>

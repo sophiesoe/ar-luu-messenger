@@ -1,4 +1,5 @@
 "use client";
+import useActiveList from "@/app/hooks/useActiveList";
 import { User } from "@prisma/client";
 import Image from "next/image";
 
@@ -7,6 +8,8 @@ interface AvatarProps {
 }
 
 const Avatar: React.FC<AvatarProps> = ({ user }) => {
+  const { members } = useActiveList();
+  const isActive = members.indexOf(user?.id!) !== -1;
   return (
     <div
       className="relative my-auto
@@ -30,8 +33,9 @@ const Avatar: React.FC<AvatarProps> = ({ user }) => {
           sizes="(max-width: 50px)"
         />
       </div>
-      <span
-        className="
+      {isActive && (
+        <span
+          className="
             absolute 
             right-0 
             top-0 
@@ -45,7 +49,8 @@ const Avatar: React.FC<AvatarProps> = ({ user }) => {
             md:h-3 
             md:w-3
           "
-      />
+        />
+      )}
     </div>
   );
 };
