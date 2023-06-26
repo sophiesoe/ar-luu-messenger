@@ -94,7 +94,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
         fixed 
         inset-y-0
         overflow-y-auto 
-              border-r
+        border-r
         border-primary-100 
         pb-20
         lg:left-20 

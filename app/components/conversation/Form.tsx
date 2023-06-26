@@ -39,14 +39,15 @@ const Form = () => {
   return (
     <div
       className="
+        sticky 
+        bottom-0 
+        left-0 
         flex 
-        w-full 
+        w-full
         items-center 
-        gap-2 
+        gap-2
         bg-primary-50
-        px-4 
-        py-4
-        lg:gap-4
+        px-4 py-4 lg:gap-4
       "
     >
       <CldUploadButton
