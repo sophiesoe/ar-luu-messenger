@@ -27,10 +27,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({ isLast, data }) => {
     ? "rounded-lg px-3 py-2"
     : "rounded-full px-3 py-2";
 
-  const container = clsx(
-    "flex items-end gap-2 lg:gap-3 p-4",
-    isOwn && "justify-end"
-  );
+  const container = clsx("flex items-end gap-3 p-4", isOwn && "justify-end");
   const avatar = clsx(isOwn && "order-2");
   const body = clsx("flex flex-col gap-1", isOwn && "items-end");
   const message = clsx(
@@ -48,8 +45,12 @@ const MessageBox: React.FC<MessageBoxProps> = ({ isLast, data }) => {
         <div className="flex items-center gap-2">
           <p className="text-sm font-semibold">{data.sender.name}</p>
         </div>
-        <div className={`flex items-end gap-2 ${!isOwn && "flex-row-reverse"}`}>
-          <p className="text-xs text-gray">
+        <div
+          className={`flex items-end gap-1 lg:gap-2 ${
+            !isOwn && "flex-row-reverse"
+          }`}
+        >
+          <p className="text-[0.50rem] text-gray lg:text-xs">
             {format(new Date(data.createdAt), "p")}
           </p>
           <div className={message}>
