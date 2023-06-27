@@ -8,7 +8,7 @@ export default function Home() {
         <div className="block @container lg:flex lg:items-center ">
           <div className="relative w-full flex-1">
             <h2 className="mb-6 text-center text-3xl font-bold tracking-tight">
-              Sign in to your account
+              Welcome to Ar Luu Messenger!
             </h2>
             <Image
               alt="Logo"
