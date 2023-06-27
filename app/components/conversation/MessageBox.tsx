@@ -41,9 +41,6 @@ const MessageBox: React.FC<MessageBoxProps> = ({ isLast, data }) => {
 
   return (
     <div className={container}>
-      <p className="text-[0.6rem] text-gray lg:text-xs">
-        {format(new Date(data.createdAt), "p")}
-      </p>
       <div className={avatar}>
         <Avatar user={data.sender} />
       </div>
@@ -51,20 +48,28 @@ const MessageBox: React.FC<MessageBoxProps> = ({ isLast, data }) => {
         <div className="mb-1 flex items-center">
           <p className="text-sm font-semibold">{data.sender.name}</p>
         </div>
-        <div className={message}>
-          <ImageModal
-            isOpen={imageModalOpen}
-            onClose={() => setImageModalOpen(false)}
-            src={data.image}
-          />
-          {data.image ? (
-            <Image
-              onClick={() => setImageModalOpen(true)}
-              alt={data.image}
-              width={266}
-              height={266}
+        <div
+          className={`flex items-end gap-1 lg:gap-2 ${
+            !isOwn && "flex-row-reverse"
+          }`}
+        >
+          <p className="text-[0.6rem] text-gray lg:text-xs">
+            {format(new Date(data.createdAt), "p")}
+          </p>
+          <div className={message}>
+            <ImageModal
+              isOpen={imageModalOpen}
+              onClose={() => setImageModalOpen(false)}
               src={data.image}
-              className="
+            />
+            {data.image ? (
+              <Image
+                onClick={() => setImageModalOpen(true)}
+                alt={data.image}
+                width={266}
+                height={266}
+                src={data.image}
+                className="
                 translate 
                 cursor-pointer 
                 rounded-md 
@@ -72,16 +77,12 @@ const MessageBox: React.FC<MessageBoxProps> = ({ isLast, data }) => {
                 p-0
                 transition hover:scale-110
               "
-            />
-          ) : (
-            <p>{data.body}</p>
-          )}
+              />
+            ) : (
+              <p>{data.body}</p>
+            )}
+          </div>
         </div>
-        {/* <div
-          className={`flex items-end gap-1 lg:gap-2 ${
-            !isOwn && "flex-row-reverse"
-          }`}
-        ></div> */}
         <div>
           {isOwn && isLast && seenList.length > 0 && (
             <p className="text-xs text-gray">{`Seen by ${seenList}`}</p>
