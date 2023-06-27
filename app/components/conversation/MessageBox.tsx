@@ -32,7 +32,8 @@ const MessageBox: React.FC<MessageBoxProps> = ({ isLast, data }) => {
   const body = clsx("flex flex-col gap-1", isOwn && "items-end");
   const message = clsx(
     "text-sm w-fit overflow-hidden",
-    isOwn ? "bg-primary-300 text-white" : "bg-primary-50 text-black"
+    isOwn ? "bg-primary-300 text-white" : "bg-primary-50 text-black",
+    !data.image ? "rounded-full" : ""
   );
 
   return (
@@ -72,9 +73,10 @@ const MessageBox: React.FC<MessageBoxProps> = ({ isLast, data }) => {
               />
             ) : (
               <p
-                className={
-                  isLongText ? "rounded-lg px-3 py-2" : "rounded-full px-3 py-2"
-                }
+                className={clsx(
+                  "px-3 py-2",
+                  isLongText ? "rounded-lg" : "rounded-full"
+                )}
               >
                 {data.body}
               </p>
