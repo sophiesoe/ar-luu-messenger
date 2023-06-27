@@ -23,6 +23,9 @@ const MessageBox: React.FC<MessageBoxProps> = ({ isLast, data }) => {
     .join(", ");
 
   const isLongText = data?.body?.length! > 50;
+  const messageText = isLongText
+    ? "rounded-lg px-3 py-2"
+    : "rounded-full px-3 py-2";
 
   const container = clsx(
     "flex items-end gap-2 lg:gap-3 p-4",
@@ -33,7 +36,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({ isLast, data }) => {
   const message = clsx(
     "text-sm w-fit overflow-hidden",
     isOwn ? "bg-primary-300 text-white" : "bg-primary-50 text-black",
-    !data.image ? "rounded-full" : "rounded-lg"
+    !data.image ? "rounded-full px-3 py-2" : messageText
   );
 
   return (
