@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useRef, useEffect } from "react";
 import { FullMessageType } from "@/app/types";
 import { pusherClient } from "@/app/libs/pusher";
@@ -70,7 +71,7 @@ const Body: React.FC<BodyProps> = ({ initialMessages = [] }) => {
           data={message}
         />
       ))}
-      <div ref={bottomRef} className="pt-24" />
+      <div ref={bottomRef} className="pt-16" />
     </div>
   );
 };
