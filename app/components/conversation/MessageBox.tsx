@@ -75,14 +75,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({ isLast, data }) => {
               "
               />
             ) : (
-              <p
-                className={clsx(
-                  "px-3 py-2",
-                  isLongText ? "rounded-lg" : "rounded-full"
-                )}
-              >
-                {data.body}
-              </p>
+              <p>{data.body}</p>
             )}
           </div>
         </div>
