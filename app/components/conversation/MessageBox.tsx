@@ -32,7 +32,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({ isLast, data }) => {
     isOwn && "justify-end"
   );
   const avatar = clsx(isOwn && "order-2");
-  const body = clsx("flex flex-col gap-1", isOwn && "items-end");
+  const body = clsx("flex flex-col mb-1", isOwn && "items-end");
   const message = clsx(
     "text-sm w-fit overflow-hidden",
     isOwn ? "bg-primary-300 text-white" : "bg-primary-50 text-black",
@@ -45,7 +45,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({ isLast, data }) => {
         <Avatar user={data.sender} />
       </div>
       <div className={body}>
-        <div className="mb-1 flex items-center">
+        <div className="flex items-center">
           <p className="text-sm font-semibold">{data.sender.name}</p>
         </div>
         <div
