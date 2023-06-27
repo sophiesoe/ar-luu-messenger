@@ -53,7 +53,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({ isLast, data }) => {
             !isOwn && "flex-row-reverse"
           }`}
         >
-          <p className="text-[0.6rem]text-gray text-center lg:text-xs">
+          <p className="text-center text-[0.6rem] text-gray lg:text-xs">
             {format(new Date(data.createdAt), "p")}
           </p>
           <div className={message}>
