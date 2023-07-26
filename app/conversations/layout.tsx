@@ -14,12 +14,11 @@ export default async function UserLayout({
     // @ts-expect-error Server Component
     <Sidebar>
       <div className="h-screen">
-        We are fixing this issue...
-        {/* <ConversationList
+        <ConversationList
           initialState={conversations}
           users={users}
           title="Messages"
-        /> */}
+        />
         {children}
       </div>
     </Sidebar>
